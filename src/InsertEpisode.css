@@ -1,0 +1,39 @@
+.episode{
+    display: flex;
+    flex-direction: column;
+    flex:0.8;
+    background-color: #E7EBEE;
+}
+.epibody{
+    display: flex;
+    flex-direction: column;
+    background-color: #E7EBEE;
+    width: 100%;
+}
+
+.episode >  .epibody > h2{
+    margin: 10px 20px;
+    font-family: 'Staatliches', cursive;
+}
+.episode > .epibody > .ditails{
+    display: flex;
+    margin-top: 20px;
+    margin-left: 10%;
+    align-items: baseline;
+    flex-direction: column;
+}
+.episode > .epibody > .ditails > .episbtn{
+    margin-top: 45px;
+    margin-left: 25%;
+}
+.episode > .epibody > .ditails > .epibtn{
+    width:20%;
+    height: 40px;
+    color:White;
+    background-color: #8EBEF5;
+    border:none;
+    border-radius: 5px;
+    font-family:'Staatliches', cursive;
+    cursor: pointer;
+
+}
