@@ -1,5 +1,6 @@
 export const initialState = {
     Searchtags:[],
+    user:null,
 
 };
 
@@ -29,6 +30,12 @@ const reducer = (state,action)=>{
         return {...state,
           Searchtags:cleartag,
       }
+
+      case "user":
+        return{
+          ...state,user:action.user
+        }
+      
         default:
            return state;
 }

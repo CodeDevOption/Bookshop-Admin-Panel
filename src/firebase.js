@@ -2,13 +2,13 @@ import {initializeApp} from'firebase/app';
 import {getFirestore} from 'firebase/firestore'
 import {getStorage} from 'firebase/storage'
 const firebaseConfig = {
-    apiKey: "AIzaSyBHCFLjE8tUEDluFfh364plBOtSdvI0b9I",
-    authDomain: "admin-panel-62a8a.firebaseapp.com",
-    projectId: "admin-panel-62a8a",
-    storageBucket: "admin-panel-62a8a.appspot.com",
-    messagingSenderId: "61694938271",
-    appId: "1:61694938271:web:84df2215e7b2b88b3e66aa",
-    measurementId: "G-8S2JDM29XT"
+      apiKey: "AIzaSyASEggbrYSbZd_9XOmqsTERN1pdbqg0Gmo",
+      authDomain: "storyflix-ee0fc.firebaseapp.com",
+      projectId: "storyflix-ee0fc",
+      storageBucket: "storyflix-ee0fc.appspot.com",
+      messagingSenderId: "567125425735",
+      appId: "1:567125425735:web:a8cddcc208e3ed22233b62",
+      measurementId: "G-382VPV1R8N"
   };
 const App = initializeApp(firebaseConfig);
 export const db = getFirestore(App);

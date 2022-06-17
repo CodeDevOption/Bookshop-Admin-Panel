@@ -42,6 +42,8 @@ function InsertAlbem() {
 // returns formatted date
   var formatedDate = year.substr(2, 3)+month+day+"."+hours+minutes+seconds;
   const AlbumID = parseFloat(formatedDate);
+  const CreateDate = Number(year.substr(2, 3)+month+day);
+
 // ========================================= useState__Values =========================================== 
     const[{Searchtags},dispatch] = useStateValue();
     const collectionRef = collection(db,'Album');
@@ -56,7 +58,7 @@ function InsertAlbem() {
     const[AlbumName,SetAlbumName] = useState('');
     const[SearchTag,SetSearchTag] = useState('');
     const[ImageURL,setImageURL] =useState('');
-    const imageRef = ref(storage,`images/${SlectImage.name}`);
+    const imageRef = ref(storage,`BooksImages/${SlectImage.name}`);
     const rand = hours+minutes+seconds;
     const id = parseInt(rand);
     const[uplod,setuplod] = useState(false);
@@ -100,9 +102,11 @@ function InsertAlbem() {
  const SendData = (url)=>{
   const EpiCount = parseInt(epiCount);
   const SearchTags = Searchtags.map((e)=> e.name );
-  const data = {AlbumID:AlbumID ,AuthorName:AuthorName,CoverURL:url,AlbumName:AlbumName,CategoryID:parseInt(Category),EpiCount:EpiCount,PreviewText:PreviewText,SearchTags:SearchTags,Tagline:TagLine,};
+  const data = {AlbumID:AlbumID ,AuthorName:AuthorName,CoverURL:url,AlbumName:AlbumName,CategoryID:parseInt(Category),EpiCount:EpiCount,PreviewText:PreviewText,SearchTags:SearchTags,Tagline:TagLine,CreatedDate:CreateDate,ViewCount:0};
+if(AuthorName && AlbumName){
+  
 
-setDoc(doc(db, "Album", `${AlbumID}`), data).then(()=>{
+setDoc(doc(db, "Albums", `${AlbumID}`), data).then(()=>{
  
 // Clear Form To After Sed Data
   SetAlbumName('')
@@ -121,7 +125,9 @@ setDoc(doc(db, "Album", `${AlbumID}`), data).then(()=>{
 }).catch((error)=>{
   console.log(error);
 })
-
+}else{
+  alert("Enter Ditails");
+}
  }
 // Add Search Tags To Arrry
   const AddList = ()=>{
@@ -200,7 +206,7 @@ setDoc(doc(db, "Album", `${AlbumID}`), data).then(()=>{
                   ))
                 }
             </div>
-            <input autoComplete='off'  type="text"  value={epiCount} onChange={e  => SetEpiCount(e.target.value)}name="epi_count" id="epi_count" placeholder='Epi Count' />
+            <input autoComplete='off' min="0"  type="number"  value={epiCount} onChange={e  => SetEpiCount(e.target.value)}name="epi_count" id="epi_count" placeholder='Epi Count' />
             <input autoComplete='off'  type="text"  value={PreviewText} onChange={e  => SetPreviewText(e.target.value)}name="preview_text" id="preview_text" placeholder='Preview Text' />
             <input autoComplete='off'  type="text" value={TagLine} onChange={e  => SetTagLine(e.target.value)} name="tas_line" id="tas_line"  placeholder='TagLine'/>
             <button id='savebtn' onClick={SubmitData} >Save</button>
